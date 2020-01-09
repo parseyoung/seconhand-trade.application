@@ -99,7 +99,6 @@
                     if (data.responseText) { alert(data.responseText); }
                 }
             });
-            // $('#joinForm').submit();
         });
     })
   </script>
@@ -109,27 +108,25 @@
     <div class="row">
       <div class="col-md-12 login-form-1">
         <h2>회원 가입</h2>
-        <form id="joinForm" action="/join" method="post">
-          <div class="form-group">
-            <input type="text" id="userId" name="userId" required maxlength="50" class="form-control" placeholder="아이디를 입력해주세요" value="" />
-          </div>
-          <div class="form-group">
-            <input type="text" id="username" name="username" required class="form-control" placeholder="이름 입력해주세요" value="" />
-          </div>
-          <div class="form-group">
-            <input type="password" id="password" name="password" required maxlength="50" class="form-control" placeholder="비밀번호를 입력해주세요" value="" />
-          </div>
-          <div class="form-group">
-            <input type="passwordChk" id="passwordchk" required maxlength="50" class="form-control" placeholder="비밀번호확인을 입력해주세요" value="" />
-          </div>
-          <div class="form-group">
-            <input id="btnSubmit" type="button" class="btnSubmit" value="회원가입" />
-          </div>
-          <div class="form-group">
-            <input type="button" class="btnSubmit btnCancel" value="취소" onclick="history.back()" />
-          </div>
-        </form>
-      </div>
+        <div class="form-group">
+          <input type="text" id="userId" name="userId" required maxlength="50" class="form-control" placeholder="아이디를 입력해주세요" value="" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="username" name="username" required class="form-control" placeholder="이름 입력해주세요" value="" />
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" required maxlength="50" class="form-control" placeholder="비밀번호를 입력해주세요" value="" />
+        </div>
+        <div class="form-group">
+          <input type="passwordChk" id="passwordchk" required maxlength="50" class="form-control" placeholder="비밀번호확인을 입력해주세요" value="" />
+        </div>
+        <div class="form-group">
+          <input id="btnSubmit" type="button" class="btnSubmit" value="회원가입" />
+        </div>
+        <div class="form-group">
+          <input type="button" class="btnSubmit btnCancel" value="취소" onclick="history.back()" />
+        </div>
+    </div>
     </div>
   </div>
 </body>
