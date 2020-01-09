@@ -4,7 +4,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>게시판 - 목록</title>
+  <title>게시판 - 글작성</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -55,6 +55,22 @@
 
   <script type="text/javascript">
     $(function () {
+        $('#submitBtn').click(function () {
+            var title = $('#title').val();
+            var contents = $('#contents').val();
+
+            if (!title) {
+                alert('제목을 입력해주세요');
+                return;
+            }
+
+            if (!contents) {
+                alert('내용을 입력해주세요');
+                return;
+            }
+
+            $('#form').submit();
+        });
     });
   </script>
 </head>
@@ -62,39 +78,21 @@
   <div class="container login-container">
     <div class="row">
       <div class="col-md-12 login-form-1">
-        <h2>게시판</h2>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th scope="col" width="10%">No.</th>
-            <th scope="col" width="20%">제목</th>
-            <th scope="col" width="50%">작성자</th>
-            <th scope="col" width="20%">작성일</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          </tbody>
-        </table>
+        <h2>게시판 - 글작성</h2>
+        <form id="form" method="post" action="/board/write">
+          <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요.">
+          </div>
+          <div class="form-group">
+            <label for="contents">내용</label>
+            <textarea class="form-control" id="contents" name="contents" rows="5"></textarea>
+          </div>
+        </form>
+
         <div class="form-group">
-          <input type="button" class="btnSubmit btnCancel" value="글작성" onclick="location.href = '/board/write'" />
+          <input id="submitBtn" type="button" class="btnSubmit btnCancel" value="확인" />
+          <input type="button" class="btnSubmit btnCancel" value="취소" onclick="location.href = '/board'" />
         </div>
       </div>
     </div>

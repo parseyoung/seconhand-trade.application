@@ -3,7 +3,6 @@ const Sequelize = require('sequelize');
 let _user;
 exports.init = async (sequelize) => {
     _user = await sequelize.define('tl_board_user', {
-        // attributes
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -45,3 +44,8 @@ exports.create = async (userId, password, name) => {
 exports.findByUserId = async (userId) => {
     return await _user.findOne({ where: { userId } });
 };
+
+exports.findByPk = async (id) => {
+    return await _user.findByPk(id);
+};
+

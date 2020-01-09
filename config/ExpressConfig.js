@@ -1,9 +1,23 @@
+const session = require('express-session');
 const LoginController = require('../controller/LoginController');
+const BoardController = require('../controller/BoardController');
 
 async function init(express, port) {
     const app = express();
+    app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: true
+    }));
+
     app.use(express.json());
     app.use(express.urlencoded());
+    app.use('/board', (req, res, next) => {
+        // if (!req.session || !req.session.userId) {
+        //     return res.redirect('/');
+        // }
+        next();
+    });
 
     app.engine('html', require('ejs').renderFile);
     app.set('views', './views');
@@ -19,6 +33,11 @@ async function route(router) {
     router.get('/', LoginController.index);
     router.get('/join', LoginController.joinView);
     router.post('/join', LoginController.join);
+    router.post('/login', LoginController.login);
+
+    router.get('/board', BoardController.index);
+    router.get('/board/write', BoardController.formPage);
+    router.post('/board/write', BoardController.save);
 
     return router;
 }

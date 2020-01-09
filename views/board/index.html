@@ -4,7 +4,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>로그인</title>
+  <title>게시판 - 목록</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -35,7 +35,7 @@
     }
     .btnSubmit
     {
-      width: 100%;
+      width: 8%;
       border-radius: 1rem;
       padding: 1.5%;
       border: none;
@@ -55,32 +55,6 @@
 
   <script type="text/javascript">
     $(function () {
-        $('#btnSubmit').click(function () {
-            var userId = $('#userId').val();
-            var password = $('#password').val();
-
-            if (!userId || !password) {
-                alert('아이디와 비밀번호를 입력해주세요');
-                return;
-            }
-
-            $.ajax({
-                url: '/login',
-                method: 'post',
-                data: {
-                    userId: userId,
-                    password: password
-                },
-                success: function (data, status) {
-                    console.error(data, status);
-                    location.href = '/board';
-                },
-                error: function (data, status) {
-                    console.error(data, status);
-                    if (data.responseText) { alert(data.responseText); }
-                }
-            });
-        });
     });
   </script>
 </head>
@@ -88,18 +62,29 @@
   <div class="container login-container">
     <div class="row">
       <div class="col-md-12 login-form-1">
-        <h2>로그인</h2>
+        <h2>게시판</h2>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col" width="10%">No.</th>
+            <th scope="col" width="50%">제목</th>
+            <th scope="col" width="20%">작성자</th>
+            <th scope="col" width="20%">작성일</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% for (const board of boards) { %>
+          <tr>
+            <th scope="row">1</th>
+            <td> <%= board.title %> </td>
+            <td> <%= board.username %> </td>
+            <td> <%= board.createdAt %> </td>
+          </tr>
+          <% } %>
+          </tbody>
+        </table>
         <div class="form-group">
-          <input type="text" id="userId" class="form-control" placeholder="아이디를 입력해주세요" value="" />
-        </div>
-        <div class="form-group">
-          <input type="password" id="password" class="form-control" placeholder="비밀번호를 입력해주세요" value="" />
-        </div>
-        <div class="form-group">
-          <input id="btnSubmit" type="button" class="btnSubmit" value="로그인" />
-        </div>
-        <div class="form-group">
-          <a href="/join" class="ForgetPwd" value="회원가입">회원가입</a>
+          <input type="button" class="btnSubmit btnCancel" value="글작성" onclick="location.href = '/board/write'" />
         </div>
       </div>
     </div>
