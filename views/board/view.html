@@ -55,38 +55,48 @@
 
   <script type="text/javascript">
     $(function () {
+        $('#deleteBtn').click(function () {
+            if (confirm('정말로 글을 삭제하시겠습니까?')) {
+                $('#form').submit();
+            }
+        });
     });
   </script>
 </head>
 <body>
   <div class="container login-container">
     <div class="row">
+      <form style="display: none" action="/board/delete" method="post" id="form">
+        <input type="hidden" name="id" value="<%= board.id %>" />
+      </form>
       <div class="col-md-12 login-form-1">
-        <h2>게시판</h2>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th scope="col" width="10%">No.</th>
-            <th scope="col" width="50%">제목</th>
-            <th scope="col" width="20%">작성자</th>
-            <th scope="col" width="20%">작성일</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% for (const board of boards) { %>
-          <tr>
-            <th scope="row">1</th>
-            <td>
-              <a href="/board/view/<%= board.id %>"><%= board.title %></a>
-            </td>
-            <td> <%= board.username %> </td>
-            <td> <%= board.createdAt %> </td>
-          </tr>
-          <% } %>
-          </tbody>
-        </table>
+        <h2>게시판 - 글작성</h2>
+        <h4>제목</h4>
         <div class="form-group">
-          <input type="button" class="btnSubmit btnCancel" value="글작성" onclick="location.href = '/board/write'" />
+          <%= board.title %>
+        </div>
+
+        <h4>내용</h4>
+        <div class="form-group">
+          <%= board.contents %>
+        </div>
+
+        <h4>작성자</h4>
+        <div class="form-group">
+          <%= board.username %>
+        </div>
+
+        <h4>생성일</h4>
+        <div class="form-group">
+          <%= board.createdAt %>
+        </div>
+
+        <div class="form-group">
+          <% if (board.isOwner) { %>
+          <input id="submitBtn" type="button" class="btnSubmit btnCancel" value="수정" onclick="location.href = '/board/update/' + <%= board.id %>" />
+          <input id="deleteBtn" type="button" class="btnSubmit btnCancel" value="삭제" />
+          <% } %>
+          <input type="button" class="btnSubmit btnCancel" value="이전" onclick="location.href = '/board'" />
         </div>
       </div>
     </div>

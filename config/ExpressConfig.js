@@ -38,6 +38,13 @@ async function route(router) {
     router.get('/board', BoardController.index);
     router.get('/board/write', BoardController.formPage);
     router.post('/board/write', BoardController.save);
+    router.post('/board/update', BoardController.update);
+
+    router.get('/board/view/:id', BoardController.viewPage);
+
+    router.post('/board/delete', BoardController.delete);
+
+    router.get('/board/update/:id', BoardController.formPage);
 
     return router;
 }
