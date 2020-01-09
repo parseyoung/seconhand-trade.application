@@ -7,8 +7,10 @@
 
 ### 2. 사용 기술
  - nodejs
- - git
- - express
- - mysql
+ - nodemon: 저장시 자동 재시작
+ - git: 형상관리
+ - express: 웹 모듈
+ - mysql: DB
  
  ## 셋팅 방법
+npm init
