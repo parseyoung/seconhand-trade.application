@@ -3,6 +3,7 @@ const express = require('express');
 const ExpressConfig = require('./config/ExpressConfig');
 const SequelizeConfig = require('./config/SequelizeConfig');
 const User = require('./model/User');
+const Board = require('./model/Board');
 
 async function initExpress () {
     const app = await ExpressConfig.init(express, process.env.EXPRESS_PORT);
@@ -18,7 +19,10 @@ async function initSequelizeAndModels () {
     );
 
     await User.init(sequelize);
-    await User.sync(process.env.DB_SYNC_FORCE);
+    // await User.sync(process.env.DB_SYNC_FORCE);
+
+    await Board.init(sequelize);
+    // await Board.sync(process.env.DB_SYNC_FORCE);
 }
 
 (async () => {
