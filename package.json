@@ -1,0 +1,11 @@
+{
+  "name": "basic-nodejs-board-project",
+  "version": "1.0.0",
+  "description": "기본적인 nodejs 기반 게시판 구현",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "developer",
+  "license": "ISC"
+}
