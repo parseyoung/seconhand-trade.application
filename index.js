@@ -5,8 +5,7 @@ const SequelizeConfig = require('./config/SequelizeConfig');
 const User = require('./model/User');
 
 async function initExpress () {
-    const app = express();
-    await ExpressConfig.init(app, process.env.EXPRESS_PORT);
+    const app = await ExpressConfig.init(express, process.env.EXPRESS_PORT);
     app.use(await ExpressConfig.route(express.Router()));
 }
 
