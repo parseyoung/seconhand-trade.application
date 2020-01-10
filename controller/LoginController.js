@@ -21,7 +21,7 @@ exports.join = async (req, res) => {
         return;
     }
 
-    const result = await UserService.createNewOne(userId, username, password);
+    const result = await UserService.createNewOne(userId, password, username);
     res.sendStatus(result ? 200 : 500);
 };
 
