@@ -13,9 +13,9 @@ async function init(express, port) {
     app.use(express.json());
     app.use(express.urlencoded());
     app.use('/board', (req, res, next) => {
-        // if (!req.session || !req.session.userId) {
-        //     return res.redirect('/');
-        // }
+        if (!req.session || !req.session.userId) {
+            return res.redirect('/');
+        }
         next();
     });
 
