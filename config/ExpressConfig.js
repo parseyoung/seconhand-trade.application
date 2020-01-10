@@ -34,6 +34,7 @@ async function route(router) {
     router.get('/join', LoginController.joinView);
     router.post('/join', LoginController.join);
     router.post('/login', LoginController.login);
+    router.get('/logout', LoginController.logout);
 
     router.get('/board', BoardController.index);
     router.get('/board/write', BoardController.formPage);

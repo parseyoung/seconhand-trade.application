@@ -44,3 +44,8 @@ exports.login = async (req, res) => {
 
     res.sendStatus(200);
 };
+
+exports.logout = async (req, res) => {
+    req.session && await req.session.destroy();
+    res.redirect('/');
+};
