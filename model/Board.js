@@ -20,6 +20,10 @@ exports.init = async (sequelize) => {
         contents: {
             type: Sequelize.TEXT,
             allowNull: false
+        },
+        fileName: {
+            type: Sequelize.STRING,
+            allowNull: true
         }
     }, {
         sequelize,
@@ -32,9 +36,8 @@ exports.sync = async (force) => {
     _board && await _board.sync({ force });
 };
 
-exports.save = async (userId, title, contents) => {
-    const result = await _board.create({ userId, title, contents });
-    console.log(`######## result.id :: ${result}`);
+exports.save = async (userId, title, contents, fileName) => {
+    const result = await _board.create({ userId, title, contents, fileName });
 };
 
 exports.findByPk = async (id) => {
@@ -47,7 +50,8 @@ exports.findByPk = async (id) => {
         contents: board.contents,
         createdAt: new Date(board.createdAt).toLocaleString(),
         updatedAt: new Date(board.updatedAt).toLocaleString(),
-        userId: board.userId
+        userId: board.userId,
+        fileName: board.fileName
     };
 };
 

@@ -1,6 +1,7 @@
 const session = require('express-session');
 const LoginController = require('../controller/LoginController');
 const BoardController = require('../controller/BoardController');
+const fileUpload = require('express-fileupload');
 
 async function init(express, port) {
     const app = express();
@@ -10,6 +11,12 @@ async function init(express, port) {
         saveUninitialized: true
     }));
 
+    app.use(fileUpload({
+        limits: { fileSize: 10 * 1024 * 1024 },
+        useTempFiles : true,
+        tempFileDir : '/tmp/'
+    }));
+    app.use('/upload', express.static('upload'));
     app.use(express.json());
     app.use(express.urlencoded());
     app.use('/board', (req, res, next) => {

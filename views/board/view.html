@@ -91,6 +91,13 @@
           <%= board.createdAt %>
         </div>
 
+        <% if (board.fileName && board.fileName !== '') { %>
+        <h4>이미지파일</h4>
+        <div class="form-group">
+          <img src="/upload/<%= board.fileName %>" />
+        </div>
+        <% } %>
+
         <div class="form-group">
           <% if (board.isOwner) { %>
           <input id="submitBtn" type="button" class="btnSubmit btnCancel" value="수정" onclick="location.href = '/board/update/' + <%= board.id %>" />

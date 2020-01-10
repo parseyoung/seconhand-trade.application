@@ -1,5 +1,6 @@
 const BoardService = require('../service/BoardService');
 const UserService = require('../service/UserService');
+const appRootPath = require('app-root-path');
 
 exports.index = async (req, res) => {
     const perPage = req.query.perPage || 2;
@@ -56,8 +57,16 @@ exports.save = async (req, res) => {
     const { title, contents } = req.body;
 
     const user = await UserService.findByUserId(userId);
+    let fileName;
     try {
-        await BoardService.save(user.id, title, contents);
+        if (req.files && req.files.file && req.files.file.name !== '') {
+            const file = req.files.file;
+            console.log('file is exist !! :: ', file.name);
+            fileName = file.name.split('.')[0] + '_' + Date.now() + '.' + file.name.split('.')[1];
+            const filePath = `${appRootPath}/upload/${fileName}`;
+            await file.mv(filePath);
+        }
+        await BoardService.save(user.id, title, contents, fileName);
     } catch (e) {
         console.error(`board save error :: ${e}`);
     }
