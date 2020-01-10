@@ -10,4 +10,5 @@ exports.createNewOne = async function (userId, password, username) {
     }
 };
 
+exports.findByPk = User.findByPk;
 exports.findByUserId = User.findByUserId;

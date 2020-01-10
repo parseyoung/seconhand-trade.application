@@ -1,13 +1,8 @@
-const User = require('../model/User');
-const Board = require('../model/Board');
+const BoardService = require('../service/BoardService');
+const UserService = require('../service/UserService');
 
 exports.index = async (req, res) => {
-    const boards = await Board.findAll();
-    for (const board of boards) {
-        const user = await User.findByPk(board.userId);
-        board.username = user.name;
-    }
-
+    const boards = await BoardService.findBoardList();
     res.render('board/index.html', { boards });
 };
 
@@ -15,10 +10,10 @@ exports.formPage = async (req, res) => {
     const boardId = req.params.id;
     if (!boardId) { return res.render('board/write.html', { board: {} }); }
 
-    const board = await Board.findByPk(boardId);
+    const board = await BoardService.findByPk(boardId);
     if (!board) { return res.redirect('/board'); }
 
-    const user = await User.findByUserId(req.session.userId);
+    const user = await UserService.findByUserId(req.session.userId);
     if (user.id !== board.userId) { return res.redirect('/board'); }
 
     res.render('board/write.html', { board });
@@ -26,21 +21,21 @@ exports.formPage = async (req, res) => {
 
 exports.delete = async (req, res) => {
     const boardId = req.body.id;
-    const board = await Board.findByPk(boardId);
-    const user = await User.findByUserId(req.session.userId);
+    const board = await BoardService.findByPk(boardId);
+    const user = await UserService.findByUserId(req.session.userId);
 
     if (user.id !== board.userId) { return res.redirect('/board'); }
 
-    await Board.deleteById(board.id);
+    await BoardService.deleteById(board.id);
 
     res.redirect('/board');
 };
 
 exports.viewPage = async (req, res) => {
-    const board = await Board.findByPk(req.params.id);
+    const board = await BoardService.findByPk(req.params.id);
     if (!board) { return res.redirect('/board'); }
 
-    const user = await User.findByPk(board.userId);
+    const user = await UserService.findByPk(board.userId);
     board.username = user.name;
     board.isOwner = user.userId === req.session.userId;
 
@@ -51,9 +46,9 @@ exports.save = async (req, res) => {
     const userId = req.session.userId || 123;
     const { title, contents } = req.body;
 
-    const user = await User.findByUserId(userId);
+    const user = await UserService.findByUserId(userId);
     try {
-        await Board.save(user.id, title, contents);
+        await BoardService.save(user.id, title, contents);
     } catch (e) {
         console.error(`board save error :: ${e}`);
     }
@@ -63,13 +58,13 @@ exports.save = async (req, res) => {
 exports.update = async (req, res) => {
     const {id, title, contents} = req.body;
 
-    const board = await Board.findByPk(id);
+    const board = await BoardService.findByPk(id);
     if (!board) { return res.redirect('/board'); }
 
-    const user = await User.findByUserId(req.session.userId);
+    const user = await UserService.findByUserId(req.session.userId);
     if (user.id !== board.userId) { return res.redirect('/board'); }
 
-    await Board.updateById(id, title, contents);
+    await BoardService.updateById(id, title, contents);
 
     res.redirect(`/board/view/${id}`);
 };
