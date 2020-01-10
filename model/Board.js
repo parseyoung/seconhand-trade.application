@@ -37,11 +37,6 @@ exports.save = async (userId, title, contents) => {
     console.log(`######## result.id :: ${result}`);
 };
 
-exports.save = async (userId, title, contents) => {
-    const result = _board.create({ userId, title, contents });
-    console.log(`######## result.id :: ${result}`);
-};
-
 exports.findByPk = async (id) => {
     const board = await _board.findByPk(id);
     if (!board) return null;
