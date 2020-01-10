@@ -2,8 +2,17 @@ const BoardService = require('../service/BoardService');
 const UserService = require('../service/UserService');
 
 exports.index = async (req, res) => {
-    const boards = await BoardService.findBoardList();
-    res.render('board/index.html', { boards });
+    const perPage = req.query.perPage || 2;
+    const page = req.query.page || 1;
+    let { searchType, searchTerm } = req.query;
+    if (searchTerm && !['title', 'contents'].includes(searchType)) {
+        searchType = 'title';
+    }
+
+    const { totalPage, totalCnt, boards } =
+        await BoardService.findBoardListWithPaging(page, perPage, searchType, searchTerm);
+
+    res.render('board/index.html', { boards, totalPage, totalCnt, currentPage: page, searchTerm, searchType });
 };
 
 exports.formPage = async (req, res) => {
@@ -43,7 +52,7 @@ exports.viewPage = async (req, res) => {
 };
 
 exports.save = async (req, res) => {
-    const userId = req.session.userId || 123;
+    const userId = req.session.userId;
     const { title, contents } = req.body;
 
     const user = await UserService.findByUserId(userId);

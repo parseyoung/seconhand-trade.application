@@ -51,11 +51,20 @@ exports.findByPk = async (id) => {
     };
 };
 
-exports.findAll = async () => {
-    const boards = await _board.findAll({
-        order: [ ['id', 'desc'] ]
+exports.findAllAngGetPagingData = async (offset, limit, searchType, searchTerm) => {
+    const where = {};
+    if (searchType) {
+        const Op = Sequelize.Op;
+        where[searchType] = { [Op.like]: `%${searchTerm}%` }
+    }
+    const result = await _board.findAndCountAll({
+        where,
+        order: [ ['id', 'desc'] ],
+        offset,
+        limit
     });
-    return boards.map(b => {
+
+    const boards = result.rows.map(b => {
         return {
             id: b.id,
             title: b.title,
@@ -63,7 +72,13 @@ exports.findAll = async () => {
             createdAt: new Date(b.createdAt).toLocaleString(),
             userId: b.userId
         }
-    })
+    });
+
+    return {
+        boards,
+        totalCnt: result.count,
+        totalPage: Math.ceil(result.count / limit)
+    };
 };
 
 exports.deleteById = async (id) => {
