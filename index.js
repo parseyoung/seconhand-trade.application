@@ -6,7 +6,7 @@ const User = require('./model/User');
 const Board = require('./model/Board');
 
 async function initExpress () {
-    const app = await ExpressConfig.init(express, process.env.EXPRESS_PORT);
+    const app = await ExpressConfig.init(express, process.env.PORT || process.env.EXPRESS_PORT || 3000);
     app.use(await ExpressConfig.route(express.Router()));
 }
 
@@ -19,10 +19,10 @@ async function initSequelizeAndModels () {
     );
 
     await User.init(sequelize);
-    // await User.sync(process.env.DB_SYNC_FORCE);
+    await User.sync(process.env.DB_SYNC_FORCE);
 
     await Board.init(sequelize);
-    // await Board.sync(process.env.DB_SYNC_FORCE);
+    await Board.sync(process.env.DB_SYNC_FORCE);
 }
 
 (async () => {
