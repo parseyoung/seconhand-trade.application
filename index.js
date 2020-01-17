@@ -2,8 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const ExpressConfig = require('./config/ExpressConfig');
 const SequelizeConfig = require('./config/SequelizeConfig');
+const MybatisConfig = require('./config/MybatisConfig');
 const User = require('./model/User');
 const Board = require('./model/Board');
+const UserDao = require('./dao/UserDao');
+const BoardDao = require('./dao/BoardDao');
 
 /**
  * express 초기화 설정
@@ -27,16 +30,28 @@ async function initSequelizeAndModels () {
     );
 
     await User.init(sequelize);
-    await User.sync(process.env.DB_SYNC_FORCE);
+    // await User.sync(process.env.DB_SYNC_FORCE);
 
     await Board.init(sequelize);
-    await Board.sync(process.env.DB_SYNC_FORCE);
+    // await Board.sync(process.env.DB_SYNC_FORCE);
+}
+
+async function initMybatis() {
+    const connection = await MybatisConfig.init(
+        process.env.DB_HOST,
+        process.env.DB_DATABASE,
+        process.env.DB_USERNAME,
+        process.env.DB_PASSWORD
+    );
+    UserDao.init(connection);
+    BoardDao.init(connection);
 }
 
 (async () => {
     try {
         await initExpress();
-        await initSequelizeAndModels();
+        await initMybatis();
+        // await initSequelizeAndModels();
     } catch (e) {
         console.error(e);
     }

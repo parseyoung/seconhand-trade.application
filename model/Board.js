@@ -37,7 +37,7 @@ exports.sync = async (force) => {
 };
 
 exports.save = async (userId, title, contents, fileName) => {
-    const result = await _board.create({ userId, title, contents, fileName });
+    await _board.create({ userId, title, contents, fileName });
 };
 
 exports.findByPk = async (id) => {

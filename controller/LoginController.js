@@ -34,13 +34,13 @@ exports.login = async (req, res) => {
     }
 
     const user = await UserService.findByUserId(userId);
-    if (!user || user.get('password') !== password) {
+    if (!user || user.password !== password) {
         res.status(400).send('회원정보가 존재하지 않습니다.');
         return;
     }
 
-    req.session.userId = user.get('userId');
-    req.session.username = user.get('username');
+    req.session.userId = user.userId;
+    req.session.username = user.username;
 
     res.sendStatus(200);
 };
