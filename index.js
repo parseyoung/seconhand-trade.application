@@ -18,7 +18,7 @@ async function initExpress () {
 }
 
 /**
- * sequelize 및 model 초기화
+ * sequelize 및 model 초기화 (사용 안함)
  * @return {Promise<void>}
  */
 async function initSequelizeAndModels () {
@@ -36,6 +36,10 @@ async function initSequelizeAndModels () {
     // await Board.sync(process.env.DB_SYNC_FORCE);
 }
 
+/**
+ * mybatis 및 DAO를 설정을 초기화한다.
+ * @return {Promise<void>}
+ */
 async function initMybatis() {
     const connection = await MybatisConfig.init(
         process.env.DB_HOST,
@@ -43,10 +47,15 @@ async function initMybatis() {
         process.env.DB_USERNAME,
         process.env.DB_PASSWORD
     );
+
+    // DAO에 mysql 접속개체를 저장시킨다.
     UserDao.init(connection);
     BoardDao.init(connection);
 }
 
+/**
+ * 실제 초기화 시작하는 부분
+ */
 (async () => {
     try {
         await initExpress();
