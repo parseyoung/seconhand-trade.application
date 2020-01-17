@@ -5,11 +5,19 @@ const SequelizeConfig = require('./config/SequelizeConfig');
 const User = require('./model/User');
 const Board = require('./model/Board');
 
+/**
+ * express 초기화 설정
+ * @return {Promise<void>}
+ */
 async function initExpress () {
     const app = await ExpressConfig.init(express, process.env.PORT || process.env.EXPRESS_PORT || 3000);
     app.use(await ExpressConfig.route(express.Router()));
 }
 
+/**
+ * sequelize 및 model 초기화
+ * @return {Promise<void>}
+ */
 async function initSequelizeAndModels () {
     const sequelize = await SequelizeConfig.init(
         process.env.DB_HOST,
