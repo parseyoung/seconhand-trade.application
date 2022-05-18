@@ -23,7 +23,7 @@ public class plus_fragment extends Fragment {
 
         pluss = (Button) view.findViewById(R.id.pluss);
 
-        plus.setOnClickListener(new View.OnClickListener() {
+        pluss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),plus.class);
