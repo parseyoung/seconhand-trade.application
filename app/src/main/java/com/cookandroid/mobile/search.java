@@ -1,6 +1,4 @@
 package com.cookandroid.mobile;
-
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,7 +21,7 @@ public class search extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.search);
 
         editSearch = (EditText) findViewById(R.id.editSearch);
         listView = (ListView) findViewById(R.id.listView);
@@ -63,7 +61,7 @@ public class search extends AppCompatActivity {
                 search(text);
             }
         });
-
+        list.clear();
 
     }
 
@@ -74,9 +72,9 @@ public class search extends AppCompatActivity {
         list.clear();
 
         // 문자 입력이 없을때는 모든 데이터를 보여준다.
-        if (charText.length() == 0) {
-            list.addAll(arraylist);
-        }
+       if (charText.length() == 0) {
+        //    list.addAll(arraylist);
+       }
         // 문자 입력을 할때..
         else
         {
@@ -97,32 +95,11 @@ public class search extends AppCompatActivity {
 
     // 검색에 사용될 데이터를 리스트에 추가한다.
     private void settingList(){
-        list.add("채수빈");
-        list.add("박지현");
-        list.add("수지");
-        list.add("남태현");
-        list.add("하성운");
-        list.add("크리스탈");
-        list.add("강승윤");
-        list.add("손나은");
-        list.add("남주혁");
-        list.add("루이");
-        list.add("진영");
-        list.add("슬기");
-        list.add("이해인");
-        list.add("고원희");
-        list.add("설리");
-        list.add("공명");
-        list.add("김예림");
-        list.add("혜리");
-        list.add("웬디");
-        list.add("박혜수");
-        list.add("카이");
-        list.add("진세연");
-        list.add("동호");
-        list.add("박세완");
-        list.add("도희");
-        list.add("창모");
-        list.add("허영지");
+        list.add("phone");
+        list.add("coffee");
+        list.add("dog");
+        list.add("baby");
+        list.add("hair");
+        list.add("golf");
     }
 }
