@@ -28,6 +28,9 @@
         <activity android:name=".signup"></activity>
         <activity android:name=".plus"></activity>
         <activity android:name=".search"></activity>
+        <activity android:name=".mainchat"></activity>
+        <activity android:name=".ChatActivity"></activity>
+
     </application>
 
 </manifest>

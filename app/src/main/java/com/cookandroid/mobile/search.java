@@ -44,17 +44,13 @@ public class search extends AppCompatActivity {
 
         // input창에 검색어를 입력시 "addTextChangedListener" 이벤트 리스너를 정의한다.
         editSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            @Override public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            @Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
+            @Override public void afterTextChanged(Editable editable) {
                 // input창에 문자를 입력할때마다 호출된다.
                 // search 메소드를 호출한다.
                 String text = editSearch.getText().toString();
@@ -97,6 +93,8 @@ public class search extends AppCompatActivity {
     private void settingList(){
         list.add("phone");
         list.add("coffee");
+        list.add("camera");
+        list.add("computer");
         list.add("dog");
         list.add("baby");
         list.add("hair");

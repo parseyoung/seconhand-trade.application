@@ -27,11 +27,27 @@
         <entry key="..\:/Mobile-master/Mobile-master/app/src/main/res/layout/search.xml" value="0.1875" />
         <entry key="..\:/Mobile-master/Mobile-master/app/src/main/res/layout/search_list.xml" value="0.1875" />
         <entry key="..\:/Mobile-master/Mobile-master/app/src/main/res/layout/signup.xml" value="0.36614583333333334" />
-        <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/chat.xml" value="0.2390625" />
+        <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/chat.xml" value="0.2248062015503876" />
+        <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/chat_s.xml" value="0.2341485507246377" />
         <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/chat_t.xml" value="0.2390625" />
         <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/fragment_chat.xml" value="0.2390625" />
         <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/fragment_home.xml" value="0.2390625" />
         <entry key="..\:/Mobile-master99/Mobile-master/app/src/main/res/layout/fragment_plus.xml" value="0.2390625" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master/app/src/main/res/layout/beauty.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master/app/src/main/res/layout/digital.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master/app/src/main/res/layout/item_recycler.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/drawable/back_et_mymsgbox.xml" value="0.1" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/drawable/back_et_name.xml" value="0.1235" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/drawable/back_et_othermsgbox.xml" value="0.1" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/drawable/et_name_cursor.xml" value="0.1" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/activity_char.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/activity_chat.xml" value="0.10778985507246377" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/activity_main.xml" value="0.10778985507246377" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/chat.xml" value="0.10778985507246377" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/chat_s.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/my_msgbox.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/samsung/AndroidStudioProjects/Mobile-master2/app/src/main/res/layout/other_msgbox.xml" value="0.18020833333333333" />
       </map>
     </option>
   </component>

@@ -30,8 +30,9 @@ public class login extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(login.this, "환영합니다~!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(login.this, user_fragment.class);
+                Toast.makeText(login.this, "환영합니다~!",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(login.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +41,6 @@ public class login extends AppCompatActivity {
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(login.this, "회원가입 완료!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(login.this, signup.class);
             startActivity(intent);
         }

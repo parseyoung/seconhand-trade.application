@@ -73,23 +73,17 @@ public class plus extends Activity implements View.OnClickListener {
      */
 
     public void doTakePhotoAction() // 카메라 촬영 후 이미지 가져오기
-
     {
-
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-
         // 임시로 사용할 파일의 경로를 생성
 
         String url = "tmp_" + String.valueOf(System.currentTimeMillis()) + ".jpg";
 
         mImageCaptureUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), url));
 
-
         intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
 
         startActivityForResult(intent, PICK_FROM_CAMERA);
-
     }
 
 
@@ -100,17 +94,11 @@ public class plus extends Activity implements View.OnClickListener {
      */
 
     public void doTakeAlbumAction() // 앨범에서 이미지 가져오기
-
     {
-
         // 앨범 호출
-
         Intent intent = new Intent(Intent.ACTION_PICK);
-
         intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
-
         startActivityForResult(intent, PICK_FROM_ALBUM);
-
     }
 
 
@@ -212,7 +200,6 @@ public class plus extends Activity implements View.OnClickListener {
                     Bitmap photo = extras.getParcelable("data"); // CROP된 BITMAP
 
                     iv_UserPhoto.setImageBitmap(photo); // 레이아웃의 이미지칸에 CROP된 BITMAP을 보여줌
-
 
                     storeCropImage(photo, filePath); // CROP된 이미지를 외부저장소, 앨범에 저장한다.
 

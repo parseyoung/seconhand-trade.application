@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "164437869139",
+    "firebase_url": "https://comcookandroidmobile-e80a0-default-rtdb.firebaseio.com",
+    "project_id": "comcookandroidmobile-e80a0",
+    "storage_bucket": "comcookandroidmobile-e80a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164437869139:android:721bac62f91cca2b45fca6",
+        "android_client_info": {
+          "package_name": "com.cookandroid.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164437869139-rrbbocmin1ak8pqut78vdgbs094i3kch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEY7f7-Iq501fk2CcqbWED_eoE5eW_6aU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164437869139-rrbbocmin1ak8pqut78vdgbs094i3kch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

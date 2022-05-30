@@ -1,56 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainchat">
 
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/container"
-        android:layout_weight="1"
-        >
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/frameLayout">
-            <TextView
-                android:id="@+id/textView"
-                android:listSelector="#00000000"
-                android:cacheColorHint="#00000000"
-                android:divider="#000000"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:transcriptMode="alwaysScroll"/>
-        </FrameLayout>
-    </LinearLayout>
+        android:ems="10"
+        android:maxLength="10"
+        android:layout_centerInParent="true"
+        android:hint="Input nick name"
+        android:inputType="text"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/back_et_name"
+        android:textCursorDrawable="@drawable/et_name_cursor"/>
+    <!--    ems최소 글자로-->
+    <!--    android:textCursorDrawable="@null" 이면 글씨 색과 같은 커서색-->
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/et_name"
+        android:layout_marginBottom="16dp"
+        android:src="@mipmap/ic_launcher"
+        android:clickable="true"
+        android:onClick="clickImage"/>
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#2F4F4F"
-        android:layout_below="@id/container"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:text="입장"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:onClick="clickBtn"/>
+</RelativeLayout>
 
-        <EditText
-            android:hint="메세지를 입력하세요"
-            android:id="@+id/inputText"
-            android:inputType="textMultiLine"
-            android:maxLines="4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.92" />
-
-        <Button
-            android:id="@+id/sendBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="send"
-            android:onClick="onSendBtnClicked" />
-
-    </LinearLayout>
-</LinearLayout>
