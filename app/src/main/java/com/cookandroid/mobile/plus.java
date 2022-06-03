@@ -53,7 +53,7 @@ import java.util.Date;
 public class plus extends AppCompatActivity {
     public static final int GALLERY_LOAD_CODE=1111; //갤러리앱으로 이동할때 사용할 임의의 코드
 
-    EditText product_name, product_price, product_exp;
+    EditText product_name;
     ImageView imageView; //가져온 프로필 사진을 보여줄 이미지뷰
 
     Uri proImgUri; //선택한 이미지 경로 uri
@@ -64,7 +64,6 @@ public class plus extends AppCompatActivity {
         setContentView(R.layout.plus);
 
         product_name=findViewById(R.id.product_name);
-        product_price=findViewById(R.id.product_price);
         imageView = findViewById(R.id.image_view);
         Button upload_btn = findViewById(R.id.upload_btn);
 
@@ -105,7 +104,6 @@ public class plus extends AppCompatActivity {
 
     public void updateInfo() {
         G.pro_name= product_name.getText().toString();
-        G.pro_price= product_price.getText().toString();
 
         //Firebase storage에 이미지 저장하기 위해 파일명 만들기(날짜를 기반으로)
         SimpleDateFormat sdf = new SimpleDateFormat("yyyMMddhhmmss"); //20191024111224
@@ -138,14 +136,13 @@ public class plus extends AppCompatActivity {
                         DatabaseReference productRef = firebaseDatabase.getReference("products");
 
                         //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
-                        productRef.child(G.pro_name).setValue(G.pro_price);
+                        productRef.child(G.productImageUrl).setValue(G.pro_name);
 
                         //2. 내 phone에 제품이름,가격,설명 proImgUri을 저장
                         SharedPreferences preferences = getSharedPreferences("account", MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
 
                         editor.putString("product_name", G.pro_name);
-                        editor.putString("product_price", G.pro_price);
                         editor.putString("productImageUrl", G.productImageUrl);
 
                         editor.commit();
@@ -159,11 +156,10 @@ public class plus extends AppCompatActivity {
             }
         });
     }
-    //내 phone에 저장되어 있는 프로필정보 읽어오기
+    //내 phone에 저장되어 있는 프로필.정보 읽어오기
     void loadData(){
         SharedPreferences preferences=getSharedPreferences("account",MODE_PRIVATE);
         G.pro_name=preferences.getString("product_name", null);
-        G.pro_price=preferences.getString("product_price", null);
         G.productImageUrl=preferences.getString("productImageUrl", null);
     }
 }
