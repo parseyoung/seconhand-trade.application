@@ -11,22 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class user_fragment extends Fragment {
+import com.google.firebase.auth.FirebaseAuth;
 
-    private View view;
-    private Button login;
+public class user_fragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
 
-        login = (Button) view.findViewById(R.id.login);
+        Button gologout = (Button) view.findViewById(R.id.gologout);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        gologout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),login.class);
+                Intent intent = new Intent(getActivity(), signout.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }

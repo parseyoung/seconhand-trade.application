@@ -8,4 +8,8 @@
     <string name="activity">액티비티</string>
     <string name="title">Borrow it item!</string>
     <string name="hello_blank_fragment">hi</string>
+    <string name="product_name">제품 이름</string>
+    <string name="product_price">가격</string>
+    <string name="product_exp">설명</string>
+    <string name="product_plus">등록</string>
 </resources>

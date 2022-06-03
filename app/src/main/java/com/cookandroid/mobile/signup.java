@@ -1,16 +1,16 @@
 package com.cookandroid.mobile;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,9 +24,9 @@ import java.util.HashMap;
 
 public class signup extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
+    private EditText name, id, pw, pw2;
+    private Button pwcheck, signup;
     TextView back;
-    EditText name, id, pw, pw2, birthyear, birthdate, birthday;
-    Button pwcheck, submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +35,13 @@ public class signup extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //기입 항목
-        name = findViewById(R.id.signName);
-        id = findViewById(R.id.signID);
-        pw = findViewById(R.id.signPW);
-        pw2 = findViewById(R.id.signPW2);
-        birthyear = findViewById(R.id.signBirth);
-        birthdate = findViewById(R.id.signBirth2);
-        birthday = findViewById(R.id.signBirth3);
+        name = (EditText) findViewById(R.id.signName);
+        id = (EditText) findViewById(R.id.signEmail);
+        pw = (EditText) findViewById(R.id.signPW);
+        pw2 = (EditText) findViewById(R.id.signPW2);
+
+        pwcheck = (Button) findViewById(R.id.pwcheckbutton);
+        signup = (Button) findViewById(R.id.signupbutton);
 
         //뒤로 가기 버튼
         back = findViewById(R.id.back);
@@ -60,13 +59,11 @@ public class signup extends AppCompatActivity {
             }
         });
 
-        //회원가입 완료 버튼
-        submit = findViewById(R.id.signupbutton);
-        submit.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //에딧 텍스트 값을 문자열로 바꾸어 함수에 넣어줍니다.
-                final String email = id.getText().toString().trim();
+                //에딧 텍스트 값을 문자열로 바꾸어 함수에 넣어줍니다
+                String email = id.getText().toString().trim();
                 String pwd = pw.getText().toString().trim();
 
                 firebaseAuth.createUserWithEmailAndPassword(email, pwd)
