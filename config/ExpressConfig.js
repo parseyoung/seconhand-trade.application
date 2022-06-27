@@ -1,6 +1,8 @@
 const session = require('express-session');
 const LoginController = require('../controller/LoginController');
 const BoardController = require('../controller/BoardController');
+const main = require('../controller/main');
+const guide = require('../controller/guide');
 const fileUpload = require('express-fileupload');
 
 /**
@@ -45,6 +47,8 @@ async function init(express, port) {
         next();
     });
 
+    app.use(express.urlencoded({extended: false}));
+    
     // view template engine으로 ejs사용
     app.engine('html', require('ejs').renderFile);
     app.set('views', './views');
@@ -62,10 +66,20 @@ async function init(express, port) {
  * @return {Promise<*>}
  */
 async function route(router) {
+    router.get('/',main.index);
+    router.get('/first',main.index);
+    router.post('/first',main.index);
+    
     router.get('/', LoginController.index);
+    router.get('/login', LoginController.index);
+    router.post('/login', LoginController.login);
+
+    router.get('/guide', guide.index);
+    router.get('/guide', guide.index);
+    router.post('/guide', guide.index);
+
     router.get('/join', LoginController.joinView);
     router.post('/join', LoginController.join);
-    router.post('/login', LoginController.login);
     router.get('/logout', LoginController.logout);
 
     router.get('/board', BoardController.index);

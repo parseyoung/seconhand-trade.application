@@ -13,6 +13,7 @@ exports.init = (c) => {
  * @param searchTerm 검색 단어
  * @return {Promise<{totalCnt: (*|number), totalPage: number, boards: (*|Uint8Array|BigInt64Array|{createdAt: string, contents: (Document.contents|*|tl_board.contents|{allowNull, type}), id: *, title: *, userId: (Document.userId|*|tl_board_user.userId|{unique, allowNull, type}|tl_board.userId|{allowNull, type})}[]|Float64Array|Int8Array|Float32Array|Int32Array|Uint32Array|Uint8ClampedArray|BigUint64Array|Int16Array|Uint16Array)}>}
  */
+
 exports.findAllAngGetPagingData = async (offset, limit, searchType, searchTerm) => {
     const countQuery = await mybatisMapper.getStatement('board', 'countWithSearch', {
         searchColumn: searchType,
@@ -55,6 +56,7 @@ exports.findAllAngGetPagingData = async (offset, limit, searchType, searchTerm) 
  * @param fileName 업로드 파일명
  * @return {Promise<void>}
  */
+
 exports.save = async (userId, title, contents, fileName) => {
     const params = {userId, title, contents};
     if (fileName) {
@@ -70,6 +72,7 @@ exports.save = async (userId, title, contents, fileName) => {
  * @param id 게시판 아이디
  * @return {Promise<null|{createdAt: string, fileName: (*|tl_board.fileName|{allowNull, type}), contents: (Document.contents|*|tl_board.contents|{allowNull, type}), id: *, title: *, userId: (Document.userId|*|tl_board.userId|{allowNull, type}|tl_board_user.userId|{unique, allowNull, type}), updatedAt: string}>}
  */
+
 exports.findByPk = async (id) => {
     const query = await mybatisMapper.getStatement('board', 'findByPk', {id});
     const [row] = await connection.query(query);
