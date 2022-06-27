@@ -91,7 +91,7 @@ public class search extends AppCompatActivity {
 
     // 검색에 사용될 데이터를 리스트에 추가한다.
     private void settingList(){
-        list.add("phone");
+        list.add("디지털기기");
         list.add("coffee");
         list.add("camera");
         list.add("computer");

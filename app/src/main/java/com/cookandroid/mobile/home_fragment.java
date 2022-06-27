@@ -40,7 +40,7 @@ public class home_fragment extends Fragment {
         digital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),digital.class);
+                Intent intent = new Intent(getActivity(),database.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }

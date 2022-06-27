@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".plus">
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:src="@drawable/ic_add_photo" />
@@ -42,11 +42,19 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:hint=""
+            android:hint="원"
             android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginBottom="10dp"/>
     </LinearLayout>
+    <EditText
+        android:id="@+id/product_exp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/product_exp"
+        android:textSize="20sp"
+        android:gravity="left|center"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/upload_btn"

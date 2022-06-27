@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/pro"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="디지털 기기"
@@ -13,8 +14,10 @@
         android:gravity="center"
         android:layout_margin="30dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <ListView
+        android:id="@+id/product"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"></ListView>
+
 </LinearLayout>
+

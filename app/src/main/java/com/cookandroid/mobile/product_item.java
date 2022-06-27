@@ -1,8 +1,10 @@
 package com.cookandroid.mobile;
 
+import java.util.ArrayList;
+
 public class product_item {
 
-    private String productImageUrl;
+    public String productImageUrl;
     String pro_name;
     String price;
     String exp;
@@ -14,7 +16,7 @@ public class product_item {
         this.productImageUrl = productImageUrl;
     }
 
-    //firebase DB에 객체로 값을 읽어올 때..
+    //firebase DB에 객체로 값을 읽어올 때
     public product_item() {
     }
 
@@ -44,4 +46,7 @@ public class product_item {
     }
 
     public void setProductImageUrl(String product_img_path) { this.productImageUrl = productImageUrl; }
+
+    public void notifyDataSetChanged() {
+    }
 }
